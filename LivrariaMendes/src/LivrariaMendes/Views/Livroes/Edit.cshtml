@@ -11,6 +11,27 @@
         <h4>Livro</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group" style="display:none">
+            <label asp-for="IdLivro" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IdLivro" class="form-control" />
+                <span asp-validation-for="IdLivro" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group" style="display:none">
+            <label asp-for="IdAutor" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IdAutor" class="form-control" />
+                <span asp-validation-for="IdAutor" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Titulo" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger" />
+            </div>
+        </div>
         <div class="form-group">
             <label asp-for="Ano" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -32,13 +53,7 @@
                 <span asp-validation-for="Preco" class="text-danger" />
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Titulo" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Titulo" class="form-control" />
-                <span asp-validation-for="Titulo" class="text-danger" />
-            </div>
-        </div>
+   
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

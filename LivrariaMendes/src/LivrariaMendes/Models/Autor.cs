@@ -10,6 +10,7 @@ namespace LivrariaMendes.Models
     {
         [Key]
         [ScaffoldColumn(false)]
+        [Display(Name = "Código")]
         public int IdAutor { get; set; }
         [Required]
         [Display(Name = "Nome")]

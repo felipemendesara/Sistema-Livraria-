@@ -11,7 +11,14 @@
         <h4>Autor</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
-        <div class="form-group">
+       <div class="form-group">
+            <label asp-for="IdAutor" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="IdAutor" class="form-control" disabled />
+                <span asp-validation-for="IdAutor" class="text-danger" />
+            </div>
+        </div>
+              <div class="form-group">
             <label asp-for="Nome" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Nome" class="form-control" />

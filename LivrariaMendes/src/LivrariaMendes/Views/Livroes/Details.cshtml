@@ -1,0 +1,42 @@
+@model LivrariaMendes.Models.Livro
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Livro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ano)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ano)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Genero)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Genero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+    </dl>
+</div>
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.IdLivro">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</p>

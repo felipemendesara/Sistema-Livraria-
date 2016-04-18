@@ -1,0 +1,50 @@
+@model IEnumerable<LivrariaMendes.Models.Livro>
+
+@{
+    ViewData["Title"] = "Livros";
+}
+
+<h2>Livros</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Novo</a>
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ano)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genero)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ano)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genero)
+        </td>
+        <td>
+            <div style="color:green">R$ @Html.DisplayFor(modelItem => item.Preco)</div>
+        </td>
+        <td>
+            <i>@Html.DisplayFor(modelItem => item.Titulo)</i>
+</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.IdLivro" class="btn btn-default">Editar</a> 
+            <a asp-action="Details" asp-route-id="@item.IdLivro"class="btn btn-primary">Detalhes</a> 
+            <a asp-action="Delete" asp-route-id="@item.IdLivro" class="btn btn-danger">Excluir</a>
+        </td>
+    </tr>
+}
+</table>

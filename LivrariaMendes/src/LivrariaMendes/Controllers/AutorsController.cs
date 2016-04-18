@@ -3,6 +3,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using LivrariaMendes.Models;
+using Microsoft.AspNet.Authorization;
 
 namespace LivrariaMendes.Controllers
 {
@@ -14,13 +15,13 @@ namespace LivrariaMendes.Controllers
         {
             _context = context;    
         }
-
+        [Authorize]
         // GET: Autors
         public IActionResult Index()
         {
             return View(_context.Autor.ToList());
         }
-
+        [Authorize]
         // GET: Autors/Details/5
         public IActionResult Details(int? id)
         {
@@ -37,13 +38,13 @@ namespace LivrariaMendes.Controllers
 
             return View(autor);
         }
-
+        [Authorize]
         // GET: Autors/Create
         public IActionResult Create()
         {
             return View();
         }
-
+        [Authorize]
         // POST: Autors/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -57,7 +58,7 @@ namespace LivrariaMendes.Controllers
             }
             return View(autor);
         }
-
+        [Authorize]
         // GET: Autors/Edit/5
         public IActionResult Edit(int? id)
         {
@@ -73,7 +74,7 @@ namespace LivrariaMendes.Controllers
             }
             return View(autor);
         }
-
+        [Authorize]
         // POST: Autors/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -87,7 +88,13 @@ namespace LivrariaMendes.Controllers
             }
             return View(autor);
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SMS(Autor autor)
+        {
+            return View();
+        }
+        [Authorize]
         // GET: Autors/Delete/5
         [ActionName("Delete")]
         public IActionResult Delete(int? id)
@@ -105,7 +112,7 @@ namespace LivrariaMendes.Controllers
 
             return View(autor);
         }
-
+        [Authorize]
         // POST: Autors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

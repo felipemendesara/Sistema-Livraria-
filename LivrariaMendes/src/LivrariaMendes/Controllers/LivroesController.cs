@@ -3,25 +3,27 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using LivrariaMendes.Models;
+using Microsoft.AspNet.Authorization;
 
 namespace LivrariaMendes.Controllers
 {
     public class LivroesController : Controller
     {
+           
         private ApplicationDbContext _context;
 
         public LivroesController(ApplicationDbContext context)
         {
             _context = context;    
         }
-
+        [Authorize]
         // GET: Livroes
         public IActionResult Index()
         {
             var applicationDbContext = _context.Livro.Include(l => l.Autor);
             return View(applicationDbContext.ToList());
         }
-
+        [Authorize]
         // GET: Livroes/Details/5
         public IActionResult Details(int? id)
         {
@@ -38,7 +40,7 @@ namespace LivrariaMendes.Controllers
 
             return View(livro);
         }
-
+        [Authorize]
         // GET: Livroes/Create
         public IActionResult Create()
         {
@@ -46,7 +48,7 @@ namespace LivrariaMendes.Controllers
             ViewBag.Autor = autor;
             return View();
         }
-
+        [Authorize]
         // POST: Livroes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -61,7 +63,7 @@ namespace LivrariaMendes.Controllers
             ViewData["IdAutor"] = new SelectList(_context.Set<Autor>(), "IdAutor", "Nome", livro.IdAutor);
             return View(livro);
         }
-
+        [Authorize]
         // GET: Livroes/Edit/5
         public IActionResult Edit(int? id)
         {
@@ -78,7 +80,7 @@ namespace LivrariaMendes.Controllers
             ViewData["IdAutor"] = new SelectList(_context.Set<Autor>(), "IdAutor", "Autor", livro.IdAutor);
             return View(livro);
         }
-
+        [Authorize]
         // POST: Livroes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -93,7 +95,7 @@ namespace LivrariaMendes.Controllers
             ViewData["IdAutor"] = new SelectList(_context.Set<Autor>(), "IdAutor", "Autor", livro.IdAutor);
             return View(livro);
         }
-
+        [Authorize]
         // GET: Livroes/Delete/5
         [ActionName("Delete")]
         public IActionResult Delete(int? id)
@@ -111,7 +113,7 @@ namespace LivrariaMendes.Controllers
 
             return View(livro);
         }
-
+        [Authorize]
         // POST: Livroes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

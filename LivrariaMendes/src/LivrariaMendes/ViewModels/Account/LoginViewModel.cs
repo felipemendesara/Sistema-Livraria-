@@ -14,9 +14,9 @@ namespace LivrariaMendes.ViewModels.Account
 
         [Required]
         [DataType(DataType.Password)]
-        public string Password { get; set; }
+        public string Senha { get; set; }
 
-        [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
+        [Display(Name = "Lembrar senha")]
+        public bool LembrarSenha { get; set; }
     }
 }

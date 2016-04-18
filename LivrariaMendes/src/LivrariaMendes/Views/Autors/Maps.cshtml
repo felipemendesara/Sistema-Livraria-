@@ -1,0 +1,23 @@
+@model LivrariaMendes.Models.Livro
+
+@{
+    ViewData["Title"] = "Maps";
+}
+
+<h2>Maps</h2>
+
+<script type ="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbdH8xo3BrPPMTLe2HTdjYY3SgpzRpsnA&sensor=false">
+    var map = null;
+    function chamaMapa() {
+        var latlng = new google.maps.LatLng(-23.64340873969638, -46.730219057147224);
+    }
+ </script>
+
+
+
+
+    @section Scripts {
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    }

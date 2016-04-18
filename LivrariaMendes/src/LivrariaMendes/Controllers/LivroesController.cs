@@ -40,6 +40,7 @@ namespace LivrariaMendes.Controllers
 
             return View(livro);
         }
+        
         [Authorize]
         // GET: Livroes/Create
         public IActionResult Create()

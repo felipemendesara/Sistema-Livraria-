@@ -88,12 +88,21 @@ namespace LivrariaMendes.Controllers
             }
             return View(autor);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult SMS(Autor autor)
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult Maps()
         {
             return View();
         }
+        [Authorize]
+        [HttpPost]
+        public IActionResult Maps(Livro livro)
+        {
+
+            return View(livro);
+        }
+
         [Authorize]
         // GET: Autors/Delete/5
         [ActionName("Delete")]

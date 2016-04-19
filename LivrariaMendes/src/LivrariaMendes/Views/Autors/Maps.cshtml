@@ -4,20 +4,75 @@
     ViewData["Title"] = "Maps";
 }
 
-<h2>Maps</h2>
-
-<script type ="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbdH8xo3BrPPMTLe2HTdjYY3SgpzRpsnA&sensor=false">
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbdH8xo3BrPPMTLe2HTdjYY3SgpzRpsnA&sensor=false">
     var map = null;
     function chamaMapa() {
         var latlng = new google.maps.LatLng(-23.64340873969638, -46.730219057147224);
     }
- </script>
+</script>
+    <h1>Livraria Maps</h1>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbdH8xo3BrPPMTLe2HTdjYY3SgpzRpsnA&sensor=false">    </script>
+    <script type="text/javascript" language="javascript">
+
+        var map = null;
+        function chamaMapa() {
+            var latlng = new google.maps.LatLng(-23.64340873969638, -46.730219057147224);
+            var myOptions = {
+                zoom: 15,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+            map.setCenter(new google.maps.LatLng(-20.7233106, -46.6146444));
+        }
+
+        function abreLink() {
+            window.open('http://www.google.com.br');
+        }
+
+        function FazMarcacao(lat, long) {
+            var latlong = lat + "," + long;
+            var myLatLong = new google.maps.LatLng(-23.64340873969638, -46.730219057147224);
+            map.setZoom(17);
+
+            var marker = new google.maps.Marker({ position: myLatLong, map: map });
+            map.setCenter(myLatLong);
+
+        }
+
+        function chamaMarcacaoEndereco(logradouro, numero, bairro, cidade) {
+            var endereco = logradouro + "," + numero + "," + bairro + "," + cidade;
+            map.setZoom(17);
+            var geoCoder = new google.maps.Geocoder();
+            geoCoder.geocode({ 'address': endereco }, function (results, status) {
+                if (status = google.maps.GeocoderStatus.OK) {
+                    var latlng = results[0].geometry.location;
+                    var marker = new google.maps.Marker({ position: latlng, map: map });
+                    map.setCenter(latlng);
+
+                }
+            })
+
+        }
+    </script>
+
+<body onload="chamaMapa();">
+    <b>Logradouro:</b><input id="logradouro" type="text" class="form-control" />
+    <b>Numero</b><input id="numero" type="text" class="form-control" />
+    <b>Birro</b><input id="bairro" type="text" class="form-control"/>
+    <b>Cidade</b><input id="cidade" type="text" class="form-control"/>
+    <br />
+    <input id="marcar" type="button"value="Marcar" class="btn btn-primary" onclick="chamaMarcacaoEndereco(logradouro.value,numero.value,bairro.value,cidade.value)" />
+    <br /><br /><br />
+        <div id="map_canvas" class="animated fadeInUp" style="width: 100%; height: 300px ; top: 0px;right:60px;bottom:60px;left: 0px;">
+        </div>
+</body>
 
 
 
 
-    @section Scripts {
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    }
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,58 @@
+@model IEnumerable<LivrariaMendes.Models.Livrarias>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Livrarias</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Nova Livraria</a>
+</p>
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApelidoLivraria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Logradouro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numero)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApelidoLivraria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bairro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Logradouro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Numero)
+        </td>
+        <td>
+            <a asp-action="Details" asp-route-id="@item.IdLivraria" class="btn btn-primary">Detalhar</a>
+            <a asp-action="Edit" asp-route-id="@item.IdLivraria" class="btn btn-default">Editar</a>
+            <a asp-action="Maps" asp-route-id="@item.IdLivraria" class="btn btn-info">Mapa</a>
+            <a asp-action="Delete" asp-route-id="@item.IdLivraria" class="btn btn-danger">Excluir</a>
+
+        </td>
+    </tr>
+}
+</table>

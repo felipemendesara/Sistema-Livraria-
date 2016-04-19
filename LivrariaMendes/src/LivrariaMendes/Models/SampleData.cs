@@ -47,6 +47,14 @@ namespace LivrariaMendes.Models
                         Ano = 2000
                     }
                     );
+                new Livrarias()
+                {
+                    ApelidoLivraria = "Livraria Mendes Republica",
+                    Cidade = "São Paulo",
+                    Logradouro = "Republica",
+                    Bairro = "Viaduto do cha",
+                    Numero = 2000
+                };
                 context.SaveChanges();
 
             }

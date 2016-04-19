@@ -19,5 +19,6 @@ namespace LivrariaMendes.Models
         }
         public DbSet<Livro> Livro { get; set; }
         public DbSet<Autor> Autor { get; set; }
+        public DbSet<Livrarias> Livrarias { get; set; }
     }
 }

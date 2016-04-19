@@ -1,15 +1,9 @@
-@model LivrariaMendes.Models.Livro
+@model LivrariaMendes.Models.Livrarias
 
 @{
     ViewData["Title"] = "Maps";
 }
 
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbdH8xo3BrPPMTLe2HTdjYY3SgpzRpsnA&sensor=false">
-    var map = null;
-    function chamaMapa() {
-        var latlng = new google.maps.LatLng(-23.64340873969638, -46.730219057147224);
-    }
-</script>
     <h1>Livraria Maps</h1>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAbdH8xo3BrPPMTLe2HTdjYY3SgpzRpsnA&sensor=false">    </script>
     <script type="text/javascript" language="javascript">
@@ -54,19 +48,21 @@
             })
 
         }
+        $(document).ready(function () {
+            chamaMapa();
+            chamaMarcacaoEndereco(logradouro.value, numero.value, bairro.value, cidade.value);
+        });
     </script>
 
-<body onload="chamaMapa();">
-    <b>Logradouro:</b><input id="logradouro" type="text" class="form-control" />
-    <b>Numero</b><input id="numero" type="text" class="form-control" />
-    <b>Birro</b><input id="bairro" type="text" class="form-control"/>
-    <b>Cidade</b><input id="cidade" type="text" class="form-control"/>
+    <b>Logradouro:</b><input id="logradouro" type="text" class="form-control" value="@Model.Logradouro"disabled />
+    <b>Numero</b><input id="numero" type="text" class="form-control" value="@Model.Numero" disabled/>
+    <b>Birro</b><input id="bairro" type="text" class="form-control"value="@Model.Bairro"disabled/>
+    <b>Cidade</b><input id="cidade" type="text" class="form-control"value="@Model.Cidade"disabled/>
+
+   
     <br />
-    <input id="marcar" type="button"value="Marcar" class="btn btn-primary" onclick="chamaMarcacaoEndereco(logradouro.value,numero.value,bairro.value,cidade.value)" />
-    <br /><br /><br />
         <div id="map_canvas" class="animated fadeInUp" style="width: 100%; height: 300px ; top: 0px;right:60px;bottom:60px;left: 0px;">
         </div>
-</body>
 
 
 
